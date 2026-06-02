@@ -1,25 +1,53 @@
+Coding
+AI Coding
+Vibe
+
+Codearts
+VS Code
+Cursor
+Codespaces
+IDE
+
+PyTorch
+TensorFlow
+Paddle
+MindSpore
+
+LangChain
+LlamaIndex
+AutoGen
+
+Llama3
+Qwen
 DeepSeek
-梁文锋
+GPT
+GLM
+Claude
+大模型
 
-谷歌
-google
-gemini
+Git
+Gitee
+pip
+uv
+Docker
+向量数据库
 
-chatgpt
-openai
+Pandas
+NumPy
+Scikit-learn
 
-金价
 
-黄金
-+价格
+TensorRT
+vLLM
+Ollama
+llama.cpp
+CANN
 
-美债
+agent
+claude code
+opencode
+RAG
+Codex
+Copilot
 
-美股
 
-美元
-+指数
-
-特朗普
-
-伊朗
