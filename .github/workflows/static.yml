@@ -35,6 +35,12 @@ jobs:
       - name: Run main.py
         run: python main.py
 
+      - name: 把生成的HTML移动到根目录index.html
+        run: |
+          find output -path "*/html/当日汇总.html" -exec cp {} ./index.html \;
+          ls -l ./index.html api/trends.json
+         # 匹配任意日期文件夹下的当日汇总.html
+         
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
