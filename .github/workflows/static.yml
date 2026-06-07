@@ -37,8 +37,8 @@ jobs:
 
       - name: 把生成的HTML移动到根目录index.html
         run: |
-          find output -name "当日汇总.html" -exec cp {} ./index.html \;
-          ls -l ./index.html api/trends.json
+          cp output/*/html/当日汇总.html ./index.html
+          ls -la ./
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
