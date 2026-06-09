@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-09T10:54:45.452664+08:00",
-  "total_titles_processed": 312,
+  "generated_at": "2026-06-09T22:47:14.562809+08:00",
+  "total_titles_processed": 589,
   "failed_sources": [],
   "trends": [
     {
       "keyword_group": "Llama3 Qwen DeepSeek GPT GLM Claude 大模型",
-      "match_count": 2,
+      "match_count": 3,
       "titles": [
         {
           "title": "DeepSeek开招土木老哥：自建GW级数据中心",
@@ -28,6 +28,17 @@
           "is_new": false,
           "appearance_count": 1,
           "time_info": "10时54分"
+        },
+        {
+          "title": "当AI大模型长出四个轮子",
+          "url": "https://s.weibo.com/weibo?q=%23%E5%BD%93AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%95%BF%E5%87%BA%E5%9B%9B%E4%B8%AA%E8%BD%AE%E5%AD%90%23&t=31&band_rank=30&Refer=top",
+          "source": "微博",
+          "ranks": [
+            30
+          ],
+          "is_new": true,
+          "appearance_count": 1,
+          "time_info": "22时47分"
         }
       ]
     },
