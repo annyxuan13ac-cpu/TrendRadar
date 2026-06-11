@@ -1,55 +1,39 @@
 {
-  "generated_at": "2026-06-10T23:32:08.326793+08:00",
-  "total_titles_processed": 591,
+  "generated_at": "2026-06-11T11:44:34.173852+08:00",
+  "total_titles_processed": 314,
   "failed_sources": [],
   "trends": [
     {
-      "keyword_group": "Llama3 Qwen DeepSeek GPT GLM Claude 大模型",
-      "match_count": 4,
+      "keyword_group": "Coding AI Coding Vibe",
+      "match_count": 1,
       "titles": [
         {
-          "title": "如何评价 Anthropic 发布的 Claude Fable 5？",
-          "url": "https://www.zhihu.com/question/2047851398734394746",
-          "source": "知乎",
-          "ranks": [
-            3
-          ],
-          "is_new": false,
-          "appearance_count": 1,
-          "time_info": "11时32分"
-        },
-        {
-          "title": "Anthropic CEO：不知道Claude是否被（特朗普）用于袭击伊朗学校。",
-          "url": "https://wallstreetcn.com/livenews/3117603",
+          "title": "小米推出MiMo Code，首次进入Coding Agent领域",
+          "url": "https://wallstreetcn.com/livenews/3117879",
           "source": "华尔街见闻-快讯",
           "ranks": [
-            5
+            10
           ],
-          "is_new": true,
+          "is_new": false,
           "appearance_count": 1,
-          "time_info": "23时32分"
-        },
+          "time_info": "11时44分"
+        }
+      ]
+    },
+    {
+      "keyword_group": "Git Gitee pip uv Docker 向量数据库",
+      "match_count": 1,
+      "titles": [
         {
-          "title": "GPT 为什么会生成这么诡异的图片？有没有研究者能解释为什么会出现这一现象？",
-          "url": "https://www.zhihu.com/question/2047033714614579489",
+          "title": "华为首款超跑 SUV 智界 RX 正式官宣，会对新能源高端市场带来哪些影响？",
+          "url": "https://www.zhihu.com/question/2048020930757239453",
           "source": "知乎",
           "ranks": [
-            16
+            8
           ],
           "is_new": false,
-          "appearance_count": 2,
-          "time_info": "[23时31分 ~ 23时32分]"
-        },
-        {
-          "title": "Deepseek-Reasonix 与 OpenCode 相比，在性能上有哪些差异？",
-          "url": "https://www.zhihu.com/question/2043657493826492339",
-          "source": "知乎",
-          "ranks": [
-            20
-          ],
-          "is_new": false,
-          "appearance_count": 2,
-          "time_info": "[23时31分 ~ 23时32分]"
+          "appearance_count": 1,
+          "time_info": "11时44分"
         }
       ]
     }
