@@ -1,36 +1,7 @@
 {
-  "generated_at": "2026-06-14T21:59:40.421277+08:00",
-  "total_titles_processed": 567,
+  "generated_at": "2026-06-15T12:03:37.151593+08:00",
+  "total_titles_processed": 314,
   "failed_sources": [],
-  "trends": [
-    {
-      "keyword_group": "Llama3 Qwen DeepSeek GPT GLM Claude 大模型",
-      "match_count": 2,
-      "titles": [
-        {
-          "title": "如何评价智谱 6 月 13 日发布的 GLM5.2 模型？",
-          "url": "https://www.zhihu.com/question/2049161661567723164",
-          "source": "知乎",
-          "ranks": [
-            2
-          ],
-          "is_new": false,
-          "appearance_count": 2,
-          "time_info": "[11时48分 ~ 11时49分]"
-        },
-        {
-          "title": "亚马逊之后，Meta也限制AI使用量了！当大厂都用不起Token，大模型巨头该“控制利润率”了？",
-          "url": "https://wallstreetcn.com/articles/3774595",
-          "source": "华尔街见闻",
-          "ranks": [
-            4
-          ],
-          "is_new": false,
-          "appearance_count": 1,
-          "time_info": "11时49分"
-        }
-      ]
-    }
-  ],
+  "trends": [],
   "report_image_url": "https://annyxuan13ac-cpu.github.io/TrendRadar/version.json/img/news.jpg"
 }
