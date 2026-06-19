@@ -29,11 +29,21 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps
 
+      - name: Debug 查看过滤词文件
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "frequency_words.txt 前20行内容："
+          head -n 20 config/frequency_words.txt
+
+
       - name: Verify required files
         run: |
           cd $GITHUB_WORKSPACE
-          echo "当前目录: $(pwd)"
-          echo "🔍 检查必需的配置文件..."
+          echo "=== 当前仓库根目录: $(pwd) ==="
+          echo "=== config文件夹内所有文件 ==="
+          ls -la ./config/
+          echo "=============================="
+
           if [ ! -f config/config.yaml ]; then
             echo "❌ 错误: config/config.yaml 文件不存在"
             echo "请参考项目文档创建配置文件"
