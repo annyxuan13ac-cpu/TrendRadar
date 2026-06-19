@@ -29,6 +29,9 @@ report:
   mode: "daily" # 可选: "daily"|"incremental"|"current"
   rank_threshold: 5 # 排名高亮阈值
 
+# 过滤词文件路径，缺一不可
+filter_word_file: "config/frequency_words.txt"
+
 notification:
   enable_notification: true # 是否启用通知功能，false 时不发送手机通知
   message_batch_size: 4000 # 消息分批大小（字节）(这个配置别动)
@@ -44,9 +47,6 @@ notification:
       end: "21:00"    # 推送时间范围结束（北京时间）
     once_per_day: true  # 每天在时间范围内只推送一次，如果 false，则时间范围内每次执行都推送一次
     push_record_retention_days: 7  # 推送记录保留天数
-
-  # 过滤词文件路径，缺一不可
-  filter_word_file: "config/frequency_words.txt"
 
   # 请务必妥善保管好 webhooks，不要公开
   # 如果你以 fork 的方式将本项目部署在 GitHub 上，请勿在此填写任何 webhooks，而是将 webhooks 填入 GitHub Secret
