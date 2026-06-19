@@ -278,7 +278,6 @@
 // 加载带时间戳的json，永久规避CDN缓存
 async function loadData() {
   try {
-    // 核心修改：拼接随机时间戳
     const res = await fetch(`./api/trends.json?_=${Date.now()}`);
     if (!res.ok) throw new Error("数据文件加载失败");
     const data = await res.json();
@@ -289,56 +288,88 @@ async function loadData() {
   }
 }
 
-// 渲染完整页面
+// 工具：判断标题是否命中过滤词
+function isFilterTitle(title, filterWords) {
+  if (!filterWords || filterWords.length === 0) return false;
+  return filterWords.some(word => title.includes(word));
+}
+
+// 工具：按source站点对新闻数组分组
+function groupBySource(newsList) {
+  const groupMap = {};
+  newsList.forEach(item => {
+    if (!groupMap[item.source]) groupMap[item.source] = [];
+    groupMap[item.source].push(item);
+  });
+  return groupMap;
+}
+
 function renderPage(data) {
-  // 填充顶部统计
+  // 顶部统计
   document.getElementById("totalNum").innerText = data.total_titles_processed + " 条";
   document.getElementById("groupCount").innerText = data.trends.length + " 条";
   const rawTime = data.generated_at.replace("T", " ").slice(0,16);
   document.getElementById("genTime").innerText = rawTime;
 
-  // 生成分组HTML
   let html = "";
+  // 遍历一级关键词分组
   data.trends.forEach((group, groupIndex) => {
+    // 第一步：过滤命中frequency_words的新闻
+    const filterWords = data.frequency_words || [];
+    const validTitles = group.titles.filter(item => !isFilterTitle(item.title, filterWords));
+    
+    // 按站点source二次分组
+    const sourceGroups = groupBySource(validTitles);
+    const sourceKeys = Object.keys(sourceGroups);
+
     html += `<div class="word-group">
       <div class="word-header">
         <div class="word-info">
           <div class="word-name">${group.keyword_group}</div>
-          <div class="word-count hot">${group.match_count} 条</div>
+          <div class="word-count hot">${validTitles.length} 条</div>
         </div>
         <div class="word-index">${groupIndex+1}/${data.trends.length}</div>
       </div>`;
 
-    group.titles.forEach((item, idx) => {
-      const newClass = item.is_new ? "news-item new" : "news-item";
-      const rankTags = item.ranks.map(r => {
-        if(r <= 3) return `<span class="rank-num top">${r}</span>`;
-        if(r <=6) return `<span class="rank-num high">${r}</span>`;
-        return `<span class="rank-num">${r}</span>`;
-      }).join("");
-      const countText = item.appearance_count > 1 ? `<span class="count-info">${item.appearance_count}次</span>` : "";
-      html += `
-        <div class="${newClass}">
-          <div class="news-number">${idx+1}</div>
-          <div class="news-content">
-            <div class="news-header">
-              <span class="source-name">${item.source}</span>
-              ${rankTags}
-              <span class="time-info">${item.time_info}</span>
-              ${countText}
+    // 遍历每个站点分组
+    sourceKeys.forEach(sourceName => {
+      const sourceNews = sourceGroups[sourceName];
+      html += `<div class="new-source-group">
+        <div class="new-source-title">${sourceName}（${sourceNews.length}条）</div>`;
+      
+      // 渲染该站点下所有新闻
+      sourceNews.forEach((item, idx) => {
+        const newClass = item.is_new ? "news-item new" : "news-item";
+        const rankTags = item.ranks.map(r => {
+          if(r <= 3) return `<span class="rank-num top">${r}</span>`;
+          if(r <=6) return `<span class="rank-num high">${r}</span>`;
+          return `<span class="rank-num">${r}</span>`;
+        }).join("");
+        const countText = item.appearance_count > 1 ? `<span class="count-info">${item.appearance_count}次</span>` : "";
+
+        html += `
+          <div class="${newClass}">
+            <div class="news-number">${idx+1}</div>
+            <div class="news-content">
+              <div class="news-header">
+                ${rankTags}
+                <span class="time-info">${item.time_info}</span>
+                ${countText}
+              </div>
+              <div class="news-title">
+                <a href="${item.url}" target="_blank" class="news-link">${item.title}</a>
+              </div>
             </div>
-            <div class="news-title">
-              <a href="${item.url}" target="_blank" class="news-link">${item.title}</a>
-            </div>
-          </div>
-        </div>`;
+          </div>`;
+      });
+      html += `</div>`;
     });
     html += `</div>`;
   });
+
   document.getElementById("contentWrap").innerHTML = html;
 }
 
-// 页面加载完成自动拉取数据
 window.addEventListener("DOMContentLoaded", loadData);
 </script>
 </body>
