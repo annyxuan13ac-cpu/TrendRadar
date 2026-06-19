@@ -66,18 +66,18 @@ jobs:
           python main.py
 
 
-      - name: Commit and push if changes
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          cd $GITHUB_WORKSPACE
-          # 1. 先完全同步远程最新代码，本地与远程完全对齐
-          git fetch origin
-          git reset --hard origin/main
-          # 2. 只新增本次爬虫产出的output文件
-          git add output/
-          # 3. 仅当output有变更才提交推送
-          if [[ -n $(git status --porcelain output/) ]]; then
-            git commit -m "Auto update output at $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
-            git push origin main
-          fi
+        - name: Commit and push if changes
+          run: |
+            git config --global user.name 'GitHub Actions'
+            git config --global user.email 'actions@github.com'
+            cd $GITHUB_WORKSPACE
+            # 先拉取远程全部更新，对齐代码
+            git fetch origin main
+            git reset --hard origin/main
+            # 仅新增本次爬虫产出文件
+            git add output/
+            # 判断output有变更才提交推送
+            if [[ -n $(git status --porcelain output/) ]]; then
+              git commit -m "Auto update output at $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
+              git push origin main
+            fi
