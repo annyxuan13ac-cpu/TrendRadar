@@ -1,7 +1,3 @@
-Coding
-AI Coding
-Vibe
-
 Codearts
 VS Code
 Cursor
@@ -12,10 +8,7 @@ PyTorch
 TensorFlow
 Paddle
 MindSpore
-
 LangChain
-LlamaIndex
-AutoGen
 
 Llama3
 Qwen
@@ -24,18 +17,7 @@ GPT
 GLM
 Claude
 大模型
-
 Git
-Gitee
-pip
-uv
-Docker
-向量数据库
-
-Pandas
-NumPy
-Scikit-learn
-
 
 TensorRT
 vLLM
