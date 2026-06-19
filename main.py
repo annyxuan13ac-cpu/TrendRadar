@@ -3470,7 +3470,7 @@ class NewsAnalyzer:
             )
 
             # 运行结束后，生成静态API文件和关联的图片
-            generate_static_api_files(self)
+            # generate_static_api_files(self)
 
         except Exception as e:
             print(f"分析流程执行出错: {e}")
