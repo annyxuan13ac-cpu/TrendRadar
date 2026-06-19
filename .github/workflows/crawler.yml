@@ -60,9 +60,12 @@ jobs:
         env:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
           GITHUB_ACTIONS: true
-        run: python main.py
+        run: |
+          # 强制清空企微环境变量，避免脚本优先读取
+          unset WEWORK_WEBHOOK_URL
+          python main.py
 
-      
+
       - name: Commit and push if changes
         run: |
           git config --global user.name 'GitHub Actions'
