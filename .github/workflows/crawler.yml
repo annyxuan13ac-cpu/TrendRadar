@@ -46,17 +46,15 @@ jobs:
 
           if [ ! -f config/config.yaml ]; then
             echo "❌ 错误: config/config.yaml 文件不存在"
-            echo "请参考项目文档创建配置文件"
             exit 1
           fi
-
           if [ ! -f config/frequency_words.txt ]; then
             echo "❌ 错误: config/frequency_words.txt 文件不存在"
-            echo "请参考项目文档创建频率词配置文件"
             exit 1
           fi
-
           echo "✅ 配置文件检查通过"
+          echo "===== 打印过滤词文件前10行调试 ====="
+          head config/frequency_words.txt
 
       - name: Run crawler
         env:
