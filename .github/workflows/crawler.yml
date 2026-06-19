@@ -72,9 +72,15 @@ jobs:
           cd $GITHUB_WORKSPACE
           # 只拉取远程更新，不覆盖本地新生成文件
           git fetch origin main
-          git merge origin/main --no-edit
-          git add output/
-          if [[ -n $(git status --porcelain output/) ]]; then
-            git commit -m "Auto update output $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
+          # rebase代替merge，减少冲突概率
+          git rebase origin/main
+          # 同时添加api、output、img三个爬虫输出目录
+          git add api/ output/ img/
+          # 仅当存在文件变更才提交推送
+          CHANGES=$(git status --porcelain api/ output/ img/)
+          if [[ -n "$CHANGES" ]]; then
+            git commit -m "Auto update data $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
             git push origin main
+          else
+            echo "无新爬虫数据，跳过提交"
           fi
