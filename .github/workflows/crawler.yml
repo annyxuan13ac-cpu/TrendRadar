@@ -61,5 +61,11 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+          # 拉取远程最新提交，解决推送被拒绝问题
+          git pull origin main --rebase
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update by GitHub Actions at $(TZ=Asia/Shanghai date)" && git push)
+          # 存在文件变更才提交推送
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "Auto update by GitHub Actions at $(TZ=Asia/Shanghai date)"
+            git push origin main
+          fi
