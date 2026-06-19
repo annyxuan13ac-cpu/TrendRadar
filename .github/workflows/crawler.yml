@@ -64,19 +64,15 @@ jobs:
           unset WEWORK_WEBHOOK_URL
           env -u WEWORK_WEBHOOK_URL python main.py
 
-    
+
       - name: Commit and push if changes
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           cd $GITHUB_WORKSPACE
-          # 只拉取远程更新，不覆盖本地新生成文件
-          git fetch origin main
-          # rebase代替merge，减少冲突概率
-          git rebase origin/main
-          # 同时添加api、output、img三个爬虫输出目录
+          # 一条命令完成拉取+自动合并，替代fetch+rebase
+          git pull origin main --no-edit
           git add api/ output/ img/
-          # 仅当存在文件变更才提交推送
           CHANGES=$(git status --porcelain api/ output/ img/)
           if [[ -n "$CHANGES" ]]; then
             git commit -m "Auto update data $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
