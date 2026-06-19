@@ -63,7 +63,8 @@ jobs:
         run: |
           # 强制清空企微环境变量，避免脚本优先读取
           unset WEWORK_WEBHOOK_URL
-          python main.py
+          # 第二层：传给python前彻底抹除，双重保险
+          env -u WEWORK_WEBHOOK_URL python main.py
 
 
         - name: Commit and push if changes
@@ -71,13 +72,11 @@ jobs:
             git config --global user.name 'GitHub Actions'
             git config --global user.email 'actions@github.com'
             cd $GITHUB_WORKSPACE
-            # 先拉取远程全部更新，对齐代码
             git fetch origin main
+            # 强制本地与远程完全对齐，根除fetch first冲突
             git reset --hard origin/main
-            # 仅新增本次爬虫产出文件
             git add output/
-            # 判断output有变更才提交推送
             if [[ -n $(git status --porcelain output/) ]]; then
-              git commit -m "Auto update output at $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
+              git commit -m "Auto update output $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
               git push origin main
             fi
