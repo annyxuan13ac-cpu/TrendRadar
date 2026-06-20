@@ -60,23 +60,23 @@ notification:
 
 # 用于让关注度更高的新闻在更前面显示，合起来是 1 就行
 weight:
-  rank_weight: 0.6 # 排名权重
+  rank_weight: 0.5 # 排名权重
   frequency_weight: 0.3 # 频次权重
-  hotness_weight: 0.1 # 热度权重
+  hotness_weight: 0.2 # 热度权重
 
 # 增加无聊的小知识
 # 这里的 name 你可以定义任意名称，只具有显示作用，不会影响数据的处理
 platforms:
   - id: "36kr-renqi"
     name: "36氪人气榜"
-  - id: "v2ex"
-    name: "V2EX"
-  - id: "36kr-quick"
-    name: "36氪快讯"
+  # - id: "v2ex"
+  #  name: "V2EX"
+  # - id: "36kr-quick"
+  #  name: "36氪快讯"
   - id: "github-trending-today"
     name: "GitHub热搜"
-  - id: "github"
-    name: "GitHub"
+  # - id: "github"
+  #  name: "GitHub"
   - id: "sspai"
     name: "少数派"
   - id: "juejin"
