@@ -38,7 +38,7 @@ with sync_playwright() as pw:
     ctx = browser.new_context(no_viewport=True)
     page = ctx.new_page()
     page.set_default_timeout(15000)
-    page.goto("目标网址")
+    page.goto("https://www.xxx-news.com/hot")
     page.wait_for_selector(".news-item", timeout=12000)
 
 VERSION = "2.2.0"
