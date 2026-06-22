@@ -62,8 +62,14 @@ jobs:
           GITHUB_ACTIONS: true
         run: |
           unset WEWORK_WEBHOOK_URL
-          env -u WEWORK_WEBHOOK_URL python main.py
-
+          env -u WEWORK_WEBHOOK_URL python main.py --debug-filter
+      - name: Debug output data count
+        run: |
+          echo "===== 爬虫输出文件统计 ====="
+          ls -lh output/
+          wc -l output/*.json
+          echo "===== 最新10条数据 ====="
+          tail -n 10 output/latest.json
 
       - name: Commit and push if changes
         run: |

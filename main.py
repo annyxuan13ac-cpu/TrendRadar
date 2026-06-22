@@ -31,6 +31,13 @@ try:
 except ImportError:
     PLAYWRIGHT_AVAILABLE = False
 
+# main.py 内初始化浏览器
+context = playwright.chromium.launch_context(
+    args=["--disable-cache"],
+    no_viewport=True
+)
+page.set_default_timeout(15000)
+page.wait_for_selector(".news-item", timeout=12000)
 
 VERSION = "2.2.0"
 
