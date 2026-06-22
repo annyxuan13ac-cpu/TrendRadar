@@ -10,7 +10,6 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Union
-from playwright.sync_api import sync_playwright
 
 import pytz
 import requests
@@ -31,15 +30,6 @@ try:
     PLAYWRIGHT_AVAILABLE = True
 except ImportError:
     PLAYWRIGHT_AVAILABLE = False
-
-# main.py 内初始化浏览器
-with sync_playwright() as pw:
-    browser = pw.chromium.launch(headless=True, args=["--disable-cache"])
-    ctx = browser.new_context(no_viewport=True)
-    page = ctx.new_page()
-    page.set_default_timeout(15000)
-    page.goto("https://www.xxx-news.com/hot")
-    page.wait_for_selector(".news-item", timeout=12000)
 
 VERSION = "2.2.0"
 
