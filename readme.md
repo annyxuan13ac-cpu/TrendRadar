@@ -654,9 +654,9 @@ frequency_words.txt 文件增加了一个【必须词】功能，使用 + 号
 
 本项目的资讯数据来源于 [newsnow](https://github.com/ourongxing/newsnow) ，你可以点击[网站](https://newsnow.busiyi.world/)，点击[更多]，查看是否有你想要的平台。 
 
-具体添加可访问 [项目源代码](https://github.com/ourongxing/newsnow/tree/main/server/sources)，根据里面的文件名，在 `config/config.yaml` 文件中修改 `platforms` 配置：
+具体添加可访问 [项目源代码](https://github.com/ourongxing/newsnow/tree/main/server/sources)，根据里面的文件名，在ts文件中参考export default defineSource获取ID：
 
-```yaml
+```export default defineSource
 platforms:
   - id: "toutiao"
     name: "今日头条"
